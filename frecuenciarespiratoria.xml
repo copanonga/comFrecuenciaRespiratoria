@@ -6,8 +6,8 @@
 	<copyright>(C)</copyright>
 	<license>Licencia</license>
 	<authorEmail>copanonga@gmail.com</authorEmail>
-	<authorUrl>www.web.com</authorUrl>
-	<version>0.0.1</version>
+	<authorUrl>www.copanonga.com</authorUrl>
+	<version>0.0.2</version>
 	<description>COM_FRECUENCIARESPIRATORIA_XML_DESCRIPTION</description>
 
 	<scriptfile>script.php</scriptfile>

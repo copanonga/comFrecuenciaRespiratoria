@@ -95,7 +95,7 @@ class frecuenciarespiratoriaControllerupdfrecuenciarespiratoria extends JControl
             $mensajesDeCreacion =  $model->save($data);
         }
         
-        $link = 'index.php?option=com_frecuenciarespiratoria&view=historial';
+        $link = 'index.php/';
         $this->setRedirect($link, $mensajesDeCreacion);
         
     }

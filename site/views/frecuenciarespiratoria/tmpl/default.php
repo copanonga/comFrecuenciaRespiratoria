@@ -1,5 +1,19 @@
 <?php
 defined('_JEXEC') or die;
+
+JHtml::_('behavior.formvalidator');
+JHtml::_('formbehavior.chosen', 'select');
+
+JFactory::getDocument()->addScriptDeclaration("
+    Joomla.submitbutton = function(task)
+    {
+        if (document.formvalidator.isValid(document.getElementById('adminForm')))
+        {
+            Joomla.submitform(task, document.getElementById('adminForm'));
+        }
+    };
+");
+
 ?>
 
 <script>
@@ -53,37 +67,96 @@ function countdown() {
 
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_frecuenciarespiratoria'); ?>" method="post" name="adminForm" id="adminForm">
+<div class="row-fluid">
     
-    <div class="header">
+    <form action="<?php echo JRoute::_('index.php?option=com_frecuenciarespiratoria'); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 
-        <h1><span class="site-title" title="Frecuencia respiratoria"><a href="frecuencia-respiratoria">Frecuencia respiratoria</a></span></h1>
-        <h2><span class="site-title" title="Frecuencia respiratoria"><legend>Frecuencia respiratoria</legend></span></h2>
+        <div class="header">
 
-        </br>
+            <h1><span class="site-title" title="Frecuencia respiratoria"><a href="frecuencia-respiratoria">Frecuencia respiratoria</a></span></h1>
+            <h2><span class="site-title" title="Frecuencia respiratoria"><legend>Frecuencia respiratoria</legend></span></h2>
 
-        <h1 id="digitosReloj" style="font-size: 60px;">00</h1>
-
-        <!--</br>
-
-        <progress value="0" max="5" id="progressBar"></progress>-->
-
-        </br></br>
-
-        <button id="empezar" onclick="countdown()" class="btn">Empezar</button>
-
-        </br></br>
-
-        <p>Número entre 1 y 300:</p>
-        <input id="numeroIntroducido" name="numeroIntroducido" oninput="calculateData()">
-
-        </br></br>
-
-        <div class="inner well">
-            <h2 id="textoFrecuenciaRespiratoria">Frecuencia respiratoria</h2>
         </div>
-        
-        <div class="btn-group pull-left">
+
+            </br>
+
+            <h1 id="digitosReloj" style="font-size: 60px;">00</h1>
+
+            <!--</br>
+
+            <progress value="0" max="5" id="progressBar"></progress>-->
+
+            </br></br>
+
+            <button id="empezar" onclick="countdown()" class="btn">Empezar</button>
+
+            </br></br>
+
+                <div class="span10 form-horizontal">
+                    
+                    <div class="control-group">
+                        
+                        <div class="control-label">
+                            <label class="control-label hasPopover required" 
+                                   data-original-title="Frecuencia respiratoria" 
+                                   data-content="Número de respiraciones del paciente">
+                                Número entre 1 y 300:
+                            </label>
+                        </div>
+
+                        <div class="controls">
+                            <input id="numeroIntroducido" 
+                                   name="numeroIntroducido" 
+                                   oninput="calculateData()"
+                                   placeholder="Número de respiraciones">
+                        </div>
+
+                    </div>
+
+                    <div class="control-group">
+
+                        <div class="control-label">
+                            <label class="control-label hasPopover required" 
+                                   data-original-title="Frecuencia respiratoria" 
+                                   data-content="Nombre del propietario">
+                                Nombre del propietario:
+                            </label>
+                        </div>
+
+                        <div class="controls">
+                            <input id="nombrePropietario" 
+                                   name="nombrePropietario" 
+                                   class="inputbox" 
+                                   placeholder="Nombre del propietario">
+                        </div>
+
+                    </div>
+                    
+                    <div class="control-group">
+
+                        <div class="control-label">
+                            <label class="control-label hasPopover" data-original-title="Frecuencia respiratoria" data-content="Nombre del paciente">
+                                Nombre del paciente:
+                            </label>
+                        </div>
+
+                        <div class="controls">
+                            <input id="nombrePaciente" name="nombrePaciente" placeholder="Nombre del nombrePaciente">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </br></br>
+            <div class="clearfix"></div>
+
+            <div class="inner well">
+                <h2 id="textoFrecuenciaRespiratoria">Frecuencia respiratoria</h2>
+            </div>
+
+            <div class="btn-group pull-left">
                 <button id="guardarFrecuenciaRespiratoria" type="button" class="btn btn-primary" 
                         onclick="
                             if (document.adminForm.resultado.value == 0) { 
@@ -95,13 +168,13 @@ function countdown() {
                 </button>
             </div>
 
-    </div>
+        <input type="hidden" name="resultado" id="resultado" value="0"/>
+        <input type="hidden" name="task" value="" />
+        <input type="hidden" name="boxchecked" value="0" />
+        <?php echo JHtml::_('form.token'); ?>
+
+    </form>
     
-    <input type="hidden" name="resultado" id="resultado" value="0"/>
-    <input type="hidden" name="task" value="" />
-    <input type="hidden" name="boxchecked" value="0" />
-    <?php echo JHtml::_('form.token'); ?>
-    
-</form>
+</div>
 
 </br></br>

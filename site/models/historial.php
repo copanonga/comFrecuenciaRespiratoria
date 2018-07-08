@@ -12,6 +12,8 @@ class frecuenciarespiratoriaModelhistorial extends JModelList
             $config['filter_fields'] = array(
                 'id', 'a.id',
                 'resultado', 'a.resultado',
+                'nombrepropietario', 'a.nombrepropietario',
+                'nombrepaciente', 'a.nombrepaciente',
                 'estado', 'a.estado',
                 'fecha_creacion', 'a.fecha_creacion'
             );
@@ -43,6 +45,8 @@ class frecuenciarespiratoriaModelhistorial extends JModelList
                 'a.id, '.
                 'a.resultado, '.
                 'a.estado, '.
+                'a.nombrepropietario, '.
+                'a.nombrepaciente, '.
                 'a.fecha_creacion'
             )
         );

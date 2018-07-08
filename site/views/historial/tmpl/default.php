@@ -51,6 +51,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
                         <?php echo JHtml::_('grid.sort', "ID", 'a.id', $listDirn, $listOrder); ?>
                     </th>
                     <th width="44%" class="title">
+                        <?php echo JHtml::_('grid.sort', "Propietario", 'a.nombrepropietario', $listDirn, $listOrder); ?>
+                    </th>
+                    <th width="44%" class="title">
+                        <?php echo JHtml::_('grid.sort', "Paciente", 'a.nombrepaciente', $listDirn, $listOrder); ?>
+                    </th>
+                    <th width="44%" class="title">
                         <?php echo JHtml::_('grid.sort', "Resultado", 'a.resultado', $listDirn, $listOrder); ?>
                     </th>
                     <th width="50%" class="center title">
@@ -74,6 +80,12 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
                         </td>
                         <td class="center hidden-phone">
                             <?php echo $item->id; ?>
+                        </td>
+                        <td class="left">
+                            <?php echo $item->nombrepropietario; ?>
+                        </td>
+                        <td class="left">
+                            <?php echo $item->nombrepaciente; ?>
                         </td>
                         <td class="left">
                             <?php echo $item->resultado; ?>

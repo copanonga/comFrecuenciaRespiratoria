@@ -93,9 +93,13 @@ class frecuenciarespiratoriaModelupdfrecuenciarespiratoria extends JModelAdmin
       
             $query = "INSERT INTO #__frecuenciarespiratoria(" .
                     "`resultado`, " .
+                    "`nombrepropietario`, " .
+                    "`nombrepaciente`, " .
                     "`estado`)  " .
                     "VALUES ( " .
                     "' " . $data["resultado"] . "',".
+                    "' " . $data["nombrePropietario"] . "',".
+                    "' " . $data["nombrePaciente"] . "',".
                     "'1')";
                     
             $bd = JFactory::getDBO();

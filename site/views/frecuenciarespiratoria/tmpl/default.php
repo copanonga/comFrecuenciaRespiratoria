@@ -2,13 +2,12 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.formvalidator');
-JHtml::_('formbehavior.chosen', 'select');
 
 JFactory::getDocument()->addScriptDeclaration("
     Joomla.submitbutton = function(task)
     {
         if (document.formvalidator.isValid(document.getElementById('adminForm')))
-        {
+        {        
             Joomla.submitform(task, document.getElementById('adminForm'));
         }
     };
@@ -69,7 +68,7 @@ function countdown() {
 
 <div class="row-fluid">
     
-    <form action="<?php echo JRoute::_('index.php?option=com_frecuenciarespiratoria'); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
+    <form action="<?php echo JRoute::_('index.php?option=com_frecuenciarespiratoria'); ?>" method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
         <div class="header">
 
@@ -93,11 +92,11 @@ function countdown() {
             </br></br>
 
                 <div class="span10 form-horizontal">
-                    
+                    <!-- 
                     <div class="control-group">
                         
                         <div class="control-label">
-                            <label class="control-label hasPopover required" 
+                            <label class="control-label hasPopover required validate-numeric" 
                                    data-original-title="Frecuencia respiratoria" 
                                    data-content="Número de respiraciones del paciente">
                                 Número entre 1 y 300:
@@ -111,41 +110,84 @@ function countdown() {
                                    placeholder="Número de respiraciones">
                         </div>
 
-                    </div>
-
+                    </div> -->
+                    
                     <div class="control-group">
-
                         <div class="control-label">
-                            <label class="control-label hasPopover required" 
-                                   data-original-title="Frecuencia respiratoria" 
-                                   data-content="Nombre del propietario">
-                                Nombre del propietario:
+                            <label id="numeroIntroducido-lbl" 
+                                   for="numeroIntroducido" 
+                                   class="hasPopover required" 
+                                   title="Número de respiraciones" 
+                                   data-content="Número de respiraciones" 
+                                   data-original-title="Frecuencia respiratoria">
+                                   Número entre 1 y 300<span class="star">&nbsp;*</span>
                             </label>
                         </div>
-
                         <div class="controls">
-                            <input id="nombrePropietario" 
-                                   name="nombrePropietario" 
-                                   class="inputbox" 
-                                   placeholder="Nombre del propietario">
+                            <input 
+                                type="text" 
+                                name="numeroIntroducido" 
+                                id="numeroIntroducido" 
+                                value="" 
+                                oninput="calculateData()"
+                                class="inputbox required validate-numeric" 
+                                size="100" 
+                                placeholder="Número de respiraciones" 
+                                required="required" 
+                                aria-required="true">
                         </div>
-
                     </div>
                     
                     <div class="control-group">
-
                         <div class="control-label">
-                            <label class="control-label hasPopover" data-original-title="Frecuencia respiratoria" data-content="Nombre del paciente">
-                                Nombre del paciente:
+                            <label id="nombrePropietario-lbl" 
+                                   for="nombrePropietario" 
+                                   class="hasPopover required" 
+                                   title="Nombre del propietario" 
+                                   data-content="Nombre del propietario" 
+                                   data-original-title="Frecuencia respiratoria">
+                                   Nombre del propietario<span class="star">&nbsp;*</span>
                             </label>
                         </div>
-
                         <div class="controls">
-                            <input id="nombrePaciente" name="nombrePaciente" placeholder="Nombre del nombrePaciente">
+                            <input 
+                                type="text" 
+                                name="nombrePropietario" 
+                                id="nombrePropietario" 
+                                value="" 
+                                class="inputbox required" 
+                                size="100" 
+                                placeholder="Nombre del propietario" 
+                                required="required" 
+                                aria-required="true">
                         </div>
-
+                    </div> 
+                    
+                    <div class="control-group">
+                        <div class="control-label">
+                            <label id="nombrePaciente-lbl" 
+                                   for="nombrePaciente" 
+                                   class="hasPopover required" 
+                                   title="Nombre del paciente" 
+                                   data-content="Nombre del paciente" 
+                                   data-original-title="Frecuencia respiratoria">
+                                   Nombre del paciente<span class="star">&nbsp;*</span>
+                            </label>
+                        </div>
+                        <div class="controls">
+                            <input 
+                                type="text" 
+                                name="nombrePaciente" 
+                                id="nombrePaciente" 
+                                value="" 
+                                class="inputbox required" 
+                                size="100" 
+                                placeholder="Nombre del paciente" 
+                                required="required" 
+                                aria-required="true">
+                        </div>
                     </div>
-
+                    
                 </div>
 
 
@@ -157,7 +199,7 @@ function countdown() {
             </div>
 
             <div class="btn-group pull-left">
-                <button id="guardarFrecuenciaRespiratoria" type="button" class="btn btn-primary" 
+                <button id="guardarFrecuenciaRespiratoria" type="submit" class="btn btn-primary validate" 
                         onclick="
                             if (document.adminForm.resultado.value == 0) { 
                                 alert('<?php echo JText::_('Debes calcular la frecuencia respiratoria antes de guardar') ?>'); } 

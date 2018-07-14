@@ -26,10 +26,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
                         <div class="filter-search btn-group pull-left">
                             <label for="filter_search_propietario" 
-                                   class="element-invisible"><?php echo JText::_('Buscar por propietario');?>
+                                   class="element-invisible hasTooltip"><?php echo JText::_('Buscar por propietario');?>
                                     title="<?php echo JText::_('Buscar por propietario'); ?>"
                             </label>
                             <input type="text" 
+                                   class="hasTooltip pull-left"
                                    name="filter_search_propietario" 
                                    id="filter_search_propietario" 
                                    placeholder="<?php echo JText::_('Buscar por propietario'); ?>" 
@@ -39,10 +40,11 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
                         
                         <div class="filter-search btn-group pull-left">
                             <label for="filter_search_paciente" 
-                                   class="element-invisible"><?php echo JText::_('Buscar por paciente');?>
+                                   class="element-invisible hasTooltip"><?php echo JText::_('Buscar por paciente');?>
                                     title="<?php echo JText::_('Buscar por paciente'); ?>"
                             </label>
                             <input type="text" 
+                                   class="hasTooltip pull-left"
                                    name="filter_search_paciente" 
                                    id="filter_search_paciente" 
                                    placeholder="<?php echo JText::_('Buscar por paciente'); ?>" 
@@ -76,13 +78,14 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
             </div>
         </div>
     </div>
-        
-    <div class="clearfix"> </div>
 
     <div class="btn-toolbar">
 
         <div class="btn-group pull-left">
-            <button type="button" class="btn" onclick="
+            <button type="button" 
+                    class="btn hasTooltip" 
+                    title="Borrar elemento"
+                    onclick="
                 if (document.adminForm.boxchecked.value == 0) { 
                     alert('<?php echo JText::_('Debes seleccionar al menos un elemento') ?>'); } 
                 else {
@@ -90,7 +93,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
                         Joomla.submitbutton('updfrecuenciarespiratoria.delete'); 
                     }
                 }"
-            class="btn btn-small">
+            >
             <span class="icon-delete" aria-hidden="true"></span>
             <?php echo JText::_('JACTION_DELETE') ?>
             </button>
@@ -102,6 +105,8 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
         <label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC');?></label>
         <?php echo $this->pagination->getLimitBox(); ?>
     </div>
+    
+    <div class="clearfix"> </div>
     
     <div id="j-main-container">
         

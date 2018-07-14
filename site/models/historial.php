@@ -25,6 +25,12 @@ class frecuenciarespiratoriaModelhistorial extends JModelList
     
     protected function populateState($ordering = null, $direction = null)
     {
+        
+        $search = $this->getUserStateFromRequest($this->context.'.filter.propietario', 'filter_search_propietario');
+        $this->setState('filter.propietario', $search);
+        
+        $search = $this->getUserStateFromRequest($this->context.'.filter.paciente', 'filter_search_paciente');
+        $this->setState('filter.paciente', $search);
 
         $state = $this->getUserStateFromRequest($this->context.'.filter.state', 'filter_state', '', 'string');
         $this->setState('filter.state', $state);
@@ -51,6 +57,32 @@ class frecuenciarespiratoriaModelhistorial extends JModelList
             )
         );
         $query->from($db->quoteName('#__frecuenciarespiratoria').' AS a');
+        
+        $search = $this->getState('filter.propietario');
+        if (!empty($search))
+        {
+            if (stripos($search, 'id:') === 0)
+            {
+                $query->where('a.id = '.(int) substr($search, 3));
+            } else {
+                
+                $search = $db->Quote('%'.$db->escape($search, true).'%');
+                $query->where('(a.nombrepropietario COLLATE UTF8_GENERAL_CI LIKE '.$search.')');
+            }
+        }
+        
+        $search = $this->getState('filter.paciente');
+        if (!empty($search))
+        {
+            if (stripos($search, 'id:') === 0)
+            {
+                $query->where('a.id = '.(int) substr($search, 3));
+            } else {
+                
+                $search = $db->Quote('%'.$db->escape($search, true).'%');
+                $query->where('(a.nombrepaciente COLLATE UTF8_GENERAL_CI LIKE '.$search.')');
+            }
+        }
 
         $orderCol	= $this->state->get('list.ordering');
         $orderDirn	= $this->state->get('list.direction');

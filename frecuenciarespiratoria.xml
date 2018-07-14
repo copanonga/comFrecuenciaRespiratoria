@@ -8,7 +8,7 @@
 	<authorEmail>copanonga@gmail.com</authorEmail>
 	<authorUrl>www.copanonga.com</authorUrl>
 	<version>0.0.2</version>
-	<description>COM_FRECUENCIARESPIRATORIA_XML_DESCRIPTION</description>
+	<description>Frecuencia respiratoria</description>
 
 	<scriptfile>script.php</scriptfile>
 
@@ -35,7 +35,7 @@
         
         
         <administration>
-            <menu img="class:categories">COM_FRECUENCIARESPIRATORIA_MENU</menu>
+            <menu img="class:categories">Frecuencia respiratoria</menu>
 
             <files folder="admin">
                 <filename>index.html</filename>

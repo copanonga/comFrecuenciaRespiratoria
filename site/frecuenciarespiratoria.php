@@ -3,6 +3,8 @@
 defined('_JEXEC') or die;
 require_once 'funciones.php';
 
+JHtml::_('bootstrap.framework');
+
 if (!JFactory::getUser()->authorise('core.manage', 'com_frecuenciarespiratoria'))
 {
     return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));

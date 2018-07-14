@@ -15,8 +15,72 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 
 <form action="<?php echo JRoute::_('index.php?option=com_frecuenciarespiratoria&view=historial'); ?>" method="post" name="adminForm" id="adminForm">
 
+    <div class="well well-small">
+        <h2 class="module-title nav-header">Búsquedas</h2>
+        <div class="sampledata-container">
+            <div class="row-striped">
+
+                <div class="row-fluid sampledata-blog">
+
+                    <div id="filter-bar" class="btn-toolbar">
+
+                        <div class="filter-search btn-group pull-left">
+                            <label for="filter_search_propietario" 
+                                   class="element-invisible"><?php echo JText::_('Buscar por propietario');?>
+                                    title="<?php echo JText::_('Buscar por propietario'); ?>"
+                            </label>
+                            <input type="text" 
+                                   name="filter_search_propietario" 
+                                   id="filter_search_propietario" 
+                                   placeholder="<?php echo JText::_('Buscar por propietario'); ?>" 
+                                   value="<?php echo $this->escape($this->state->get('filter.propietario')); ?>" 
+                                   title="<?php echo JText::_('Buscar por propietario'); ?>" />
+                        </div>
+                        
+                        <div class="filter-search btn-group pull-left">
+                            <label for="filter_search_paciente" 
+                                   class="element-invisible"><?php echo JText::_('Buscar por paciente');?>
+                                    title="<?php echo JText::_('Buscar por paciente'); ?>"
+                            </label>
+                            <input type="text" 
+                                   name="filter_search_paciente" 
+                                   id="filter_search_paciente" 
+                                   placeholder="<?php echo JText::_('Buscar por paciente'); ?>" 
+                                   value="<?php echo $this->escape($this->state->get('filter.paciente')); ?>" 
+                                   title="<?php echo JText::_('Buscar por paciente'); ?>" />
+                        </div>
+
+                        <div class="btn-group pull-left">
+                            <button class="btn hasTooltip" type="submit" 
+                                    title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>">
+                                <i class="icon-search"></i>
+                            </button>
+                        </div>
+
+                        <div class="btn-group pull-left">
+                            <button class="btn hasTooltip"
+                                    title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" 
+                                    onclick="
+                                        document.getElementById('filter_search_propietario').value='';
+                                        document.getElementById('filter_search_paciente').value='';
+                                        this.form.submit();">
+                            <?php echo JText::_('JSEARCH_FILTER_CLEAR') ?>
+                            </button>
+                        </div>
+
+
+                    </div>
+
+                </div>   
+
+            </div>
+        </div>
+    </div>
+        
+    <div class="clearfix"> </div>
+
     <div class="btn-toolbar">
-            
+
         <div class="btn-group pull-left">
             <button type="button" class="btn" onclick="
                 if (document.adminForm.boxchecked.value == 0) { 
@@ -31,9 +95,9 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
             <?php echo JText::_('JACTION_DELETE') ?>
             </button>
         </div>
-        
+
     </div>
-        
+
     <div class="btn-group pull-right">
         <label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC');?></label>
         <?php echo $this->pagination->getLimitBox(); ?>

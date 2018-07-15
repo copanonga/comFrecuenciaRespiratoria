@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_FRECUENCIARESPIRATORIA" option="Option">
+	<layout title="Frecuencia respiratoria" option="Option">
 		<message>
-			<![CDATA[COM_FRECUENCIARESPIRATORIA_COMPONENT_DESC]]>
+			<![CDATA[Cálculo de la frecuencia respiratoria]]>
 		</message>
 	</layout>	
 </metadata>
